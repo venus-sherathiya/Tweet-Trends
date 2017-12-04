@@ -18,7 +18,7 @@ def lambda_handler(event, context):
 	        connection_class=RequestsHttpConnection
 	        )
 
-	data = es.search(index="index2",size=4000, body={"query": {"match_all":{}}}) 
+	data = es.search(index="index2",size=4000, body={"query": {"match_all":{"text": event['track']}}}) 
 	tweet = []
 	for hit in data['hits']['hits']:
 		try:
